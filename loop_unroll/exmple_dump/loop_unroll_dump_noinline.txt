@@ -1,0 +1,66 @@
+
+loop_unroll_new:     file format elf32-littleriscv
+
+
+Disassembly of section .text:
+
+00010074 <main>:
+   10074:	1141                	addi	sp,sp,-16
+   10076:	c606                	sw	ra,12(sp)
+   10078:	2021                	jal	10080 <f_TestUnroll.isra.0>
+   1007a:	40b2                	lw	ra,12(sp)
+   1007c:	0141                	addi	sp,sp,16
+   1007e:	a009                	j	10080 <f_TestUnroll.isra.0>
+
+00010080 <f_TestUnroll.isra.0>:
+   10080:	00001797          	auipc	a5,0x1
+   10084:	09478793          	addi	a5,a5,148 # 11114 <G_headerBuffers>
+   10088:	00001717          	auipc	a4,0x1
+   1008c:	09070713          	addi	a4,a4,144 # 11118 <_edata>
+   10090:	4591                	li	a1,4
+   10092:	6605                	lui	a2,0x1
+   10094:	1ab72c23          	sw	a1,440(a4)
+   10098:	1ac71e23          	sh	a2,444(a4)
+   1009c:	1af72423          	sw	a5,424(a4)
+   100a0:	4394                	lw	a3,0(a5)
+   100a2:	4501                	li	a0,0
+   100a4:	9af9                	andi	a3,a3,-2
+   100a6:	c394                	sw	a3,0(a5)
+   100a8:	80418693          	addi	a3,gp,-2044 # 11118 <_edata>
+   100ac:	1ad72623          	sw	a3,428(a4)
+   100b0:	43d4                	lw	a3,4(a5)
+   100b2:	9af9                	andi	a3,a3,-2
+   100b4:	c3d4                	sw	a3,4(a5)
+   100b6:	80818693          	addi	a3,gp,-2040 # 1111c <_edata+0x4>
+   100ba:	1ad72823          	sw	a3,432(a4)
+   100be:	4794                	lw	a3,8(a5)
+   100c0:	9af9                	andi	a3,a3,-2
+   100c2:	c794                	sw	a3,8(a5)
+   100c4:	80c18693          	addi	a3,gp,-2036 # 11120 <_edata+0x8>
+   100c8:	1ad72a23          	sw	a3,436(a4)
+   100cc:	47d4                	lw	a3,12(a5)
+   100ce:	9af9                	andi	a3,a3,-2
+   100d0:	c7d4                	sw	a3,12(a5)
+   100d2:	81018693          	addi	a3,gp,-2032 # 11124 <_edata+0xc>
+   100d6:	1eb72823          	sw	a1,496(a4)
+   100da:	1ec71a23          	sh	a2,500(a4)
+   100de:	1ed72023          	sw	a3,480(a4)
+   100e2:	4b94                	lw	a3,16(a5)
+   100e4:	9af9                	andi	a3,a3,-2
+   100e6:	cb94                	sw	a3,16(a5)
+   100e8:	81418693          	addi	a3,gp,-2028 # 11128 <_edata+0x10>
+   100ec:	1ed72223          	sw	a3,484(a4)
+   100f0:	4bd4                	lw	a3,20(a5)
+   100f2:	9af9                	andi	a3,a3,-2
+   100f4:	cbd4                	sw	a3,20(a5)
+   100f6:	81818693          	addi	a3,gp,-2024 # 1112c <_edata+0x14>
+   100fa:	1ed72423          	sw	a3,488(a4)
+   100fe:	4f94                	lw	a3,24(a5)
+   10100:	9af9                	andi	a3,a3,-2
+   10102:	cf94                	sw	a3,24(a5)
+   10104:	81c18693          	addi	a3,gp,-2020 # 11130 <_edata+0x18>
+   10108:	1ed72623          	sw	a3,492(a4)
+   1010c:	4fd8                	lw	a4,28(a5)
+   1010e:	9b79                	andi	a4,a4,-2
+   10110:	cfd8                	sw	a4,28(a5)
+   10112:	8082                	ret

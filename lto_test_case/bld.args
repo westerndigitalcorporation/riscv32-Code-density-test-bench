@@ -1,0 +1,14 @@
+-fno-builtin-printf
+-g
+-fgcse-las
+-c
+-march=rv32imc
+-std=gnu99
+-nostartfiles
+-fdata-sections
+-static
+-mabi=ilp32
+-mcmodel=medany
+-ffunction-sections
+-Os
+-flto

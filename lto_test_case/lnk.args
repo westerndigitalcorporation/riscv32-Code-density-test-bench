@@ -1,0 +1,9 @@
+-Os
+-Tlink.ld
+-Wl,--gc-sections
+-Wl,--start-group
+-flto
+-mabi=ilp32
+-march=rv32imc
+-nostartfiles
+-nostdlib

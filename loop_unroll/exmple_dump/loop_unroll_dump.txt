@@ -1,0 +1,47 @@
+
+loop_unroll:     file format elf32-littleriscv
+
+
+Disassembly of section .text:
+
+00010074 <main>:
+   10074:	1141                	addi	sp,sp,-16
+   10076:	4509                	li	a0,2
+   10078:	c606                	sw	ra,12(sp)
+   1007a:	2029                	jal	10084 <f_TestUnroll.constprop.0>
+   1007c:	40b2                	lw	ra,12(sp)
+   1007e:	450d                	li	a0,3
+   10080:	0141                	addi	sp,sp,16
+   10082:	a009                	j	10084 <f_TestUnroll.constprop.0>
+
+00010084 <f_TestUnroll.constprop.0>:
+   10084:	00001797          	auipc	a5,0x1
+   10088:	06078793          	addi	a5,a5,96 # 110e4 <G_headerBuffers>
+   1008c:	0007a883          	lw	a7,0(a5)
+   10090:	00001717          	auipc	a4,0x1
+   10094:	25070713          	addi	a4,a4,592 # 112e0 <_edata+0x1f8>
+   10098:	4601                	li	a2,0
+   1009a:	4811                	li	a6,4
+   1009c:	4341                	li	t1,16
+   1009e:	02800e13          	li	t3,40
+   100a2:	03072e23          	sw	a6,60(a4)
+   100a6:	040707a3          	sb	zero,79(a4)
+   100aa:	046706a3          	sb	t1,77(a4)
+   100ae:	00261e93          	slli	t4,a2,0x2
+   100b2:	4681                	li	a3,0
+   100b4:	01d687b3          	add	a5,a3,t4
+   100b8:	03c787b3          	mul	a5,a5,t3
+   100bc:	00269593          	slli	a1,a3,0x2
+   100c0:	95ba                	add	a1,a1,a4
+   100c2:	0685                	addi	a3,a3,1
+   100c4:	97c6                	add	a5,a5,a7
+   100c6:	d5dc                	sw	a5,44(a1)
+   100c8:	0187c583          	lbu	a1,24(a5)
+   100cc:	99f1                	andi	a1,a1,-4
+   100ce:	00b78c23          	sb	a1,24(a5)
+   100d2:	ff0691e3          	bne	a3,a6,100b4 <f_TestUnroll.constprop.0+0x30>
+   100d6:	0605                	addi	a2,a2,1
+   100d8:	04870713          	addi	a4,a4,72
+   100dc:	fca613e3          	bne	a2,a0,100a2 <f_TestUnroll.constprop.0+0x1e>
+   100e0:	4501                	li	a0,0
+   100e2:	8082                	ret
