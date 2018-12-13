@@ -1,5 +1,5 @@
 #include <stdio.h>
-
+extern int foo(void);
 void* G_MY_GLOBAL[10];
 
 //unsigned long TEMP;
@@ -32,4 +32,7 @@ int test()
 void my_main(void)
 {
   test();
+#ifdef BIG_CODE
+  foo();
+#endif
 }
