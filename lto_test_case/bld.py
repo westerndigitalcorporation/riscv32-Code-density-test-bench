@@ -20,16 +20,16 @@ str_build_flag = ""
 if strFlag == "big_code":
   str_build_flag = "-DBIG_CODE"
   
-strMain = "%s -o %s @bld.args %s %s" % (GCC_PATH, os.path.join("output", "main.o"), str_build_flag, os.path.join("src", "main.c"))
+strMain = "%s -o %s @bld.args %s %s" % (GCC_PATH, os.path.join("output", "main.o"), str_build_flag, os.path.join("code", "src", "main.c"))
 print strMain
 os.system(strMain)
 
-strCrt = "%s -o %s @bld.args %s" % (GCC_PATH, os.path.join("output", "crt.o"), os.path.join("src", "crt.s"))
+strCrt = "%s -o %s @bld.args %s" % (GCC_PATH, os.path.join("output", "crt.o"), os.path.join("code", "src", "crt.s"))
 print strCrt
 os.system(strCrt)
 
 if strFlag == "big_code":
-  strFoo = "%s -o %s @bld.args %s" % (GCC_PATH, os.path.join("output", "foo.o"), os.path.join("src", "foo.c"))
+  strFoo = "%s -o %s @bld.args %s" % (GCC_PATH, os.path.join("output", "foo.o"), os.path.join("code", "src", "foo.c"))
   print strFoo
   os.system(strFoo)
   
