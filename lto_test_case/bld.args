@@ -12,3 +12,4 @@
 -ffunction-sections
 -Os
 -flto
+-Icode/inc
