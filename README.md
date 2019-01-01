@@ -9,5 +9,5 @@ This repository uses submodules. You need the --recursive option to fetch the su
 Install the dependencies and devDependencies and start the server.
 
 ```sh
-$ git clone --recursivehttps://github.com/westerndigitalcorporation/riscv32-Code-density-test-bench.git
+$ git clone --recursive https://github.com/westerndigitalcorporation/riscv32-Code-density-test-bench.git
 ```
