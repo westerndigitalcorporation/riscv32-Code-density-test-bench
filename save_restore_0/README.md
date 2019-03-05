@@ -4,5 +4,5 @@
 # Link
     riscv32-unknown-elf-gcc -o out.elf save_restore.o save_restore_file2.o @lnk_args 
 
-# Disassembl 
+# Disassemble 
     riscv32-unknown-elf-objdump -D out.elf > dump.txt
