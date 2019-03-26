@@ -1,0 +1,13 @@
+-g
+-msave-restore
+-march=rv32imc
+-Os
+-std=gnu99
+-fgcse-las
+-nostartfiles
+-fdata-sections
+-fno-builtin-printf
+-static
+-mabi=ilp32
+-mcmodel=medany
+-ffunction-sections

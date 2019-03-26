@@ -1,0 +1,9 @@
+-Os 
+-Wl,--gc-sections 
+-Wl,--print-memory-usage 
+-Wl,--start-group 
+-Wl,-Map=output.map 
+-g
+-mabi=ilp32
+-march=rv32imc
+-nostartfiles
