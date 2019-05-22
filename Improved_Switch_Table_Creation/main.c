@@ -13,26 +13,27 @@
 
 typedef enum
 {
-  D_INDEX_1,
-  D_INDEX_2,
-  D_INDEX_3,
-  D_INDEX_4,
-  D_INDEX_5
-} E_INDEX;
+  D_VALUE_0,
+  D_VALUE_1,
+  D_VALUE_2,
+  D_VALUE_3,
+  D_VALUE_4,
+  D_VALUE_5
+} E_VALUE;
 
 typedef enum
 {
-  D_TYPE_1,
-  D_TYPE_2,
-  D_TYPE_3,
-} E_TYPE;
+  D_CASE_0,
+  D_CASE_1,
+  D_CASE_2,
+} E_CASE;
 
 typedef struct
 {
   unsigned char field1;
   unsigned char field1_;
   unsigned int field2;
-  
+
 } ST_1;
 
 unsigned char handler_func_1(ST_1* st1_p);
@@ -40,7 +41,7 @@ unsigned char handler_func_2(ST_1* st1_p);
 
 typedef unsigned char (*FUNC_PTR)(ST_1*);
 
-FUNC_PTR func_ptr_table[D_INDEX_5] =
+FUNC_PTR func_ptr_table[D_VALUE_5] =
 {
   handler_func_2,
   handler_func_1,
@@ -48,21 +49,21 @@ FUNC_PTR func_ptr_table[D_INDEX_5] =
   handler_func_2,
 };
 
-static inline E_INDEX get_index(const ST_1* st1_p)
+static inline E_VALUE get_index(const ST_1* st1_p)
 {
   switch (st1_p->field1)
   {
-    case D_TYPE_1:
-      return  D_INDEX_1;
+    case D_CASE_0:
+      return  D_VALUE_1;
 
-    case D_TYPE_2:
-      return D_INDEX_2;
+    case D_CASE_1:
+      return D_VALUE_2;
 
-    case D_TYPE_3:
-      return D_INDEX_3;
+    case D_CASE_2:
+      return D_VALUE_3;
   }
 
-  return D_INDEX_4;
+  return D_VALUE_4;
 }
 
 ST_1* list[100];
@@ -90,7 +91,7 @@ unsigned char handler_func_1(ST_1* st1_p)
 
 unsigned int my_func(ST_1* st1_p)
 {
-   E_INDEX index;
+   E_VALUE index;
    FUNC_PTR func_p;
    unsigned int res;
 
@@ -106,7 +107,7 @@ void main(int argc, char* argv[])
    ST_1** var1_pp;
    *var1_pp = (ST_1*)argv[0];
    ST_1* st1_p = var1_pp[*argv[1]];
-   
+
    if (my_func(st1_p))
    {
       st1_p->field2++;
