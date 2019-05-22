@@ -11,94 +11,86 @@
 * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-typedef enum
-{
-  D_INDEX_1,
-  D_INDEX_2,
-  D_INDEX_3,
-  D_INDEX_4,
-  D_INDEX_5
-} E_INDEX;
+#define D_THREE                         (3)
+#define D_ERR_1                         (0xFF)
+#define D_ERR_2                         (0)
+#define D_MASK                          (0xFF00FF00)
+#define D_FIXED_ADDRESS                 (0xF0007400)
+#define D_INLINE                        static inline
 
-typedef enum
+typedef struct 
 {
-  D_TYPE_1,
-  D_TYPE_2,
-  D_TYPE_3,
-} E_TYPE;
-
-typedef struct
-{
-  unsigned char field1;
-  unsigned char field1_;
-  unsigned int field2;
+  unsigned int st1_field1;
+  unsigned int st1_field2;
+  unsigned int st1_field3;
   
-} ST_1;
+}ST_1;
 
-unsigned char handler_func_1(ST_1* st1_p);
-unsigned char handler_func_2(ST_1* st1_p);
-
-typedef unsigned char (*FUNC_PTR)(ST_1*);
-
-FUNC_PTR func_ptr_table[D_INDEX_5] =
+typedef struct 
 {
-  handler_func_2,
-  handler_func_1,
-  handler_func_2,
-  handler_func_2,
-};
+  unsigned char st2_field1;
+  unsigned char st2_field2; 
+} ST_2;
 
-static inline E_INDEX get_index(const ST_1* st1_p)
+typedef union 
 {
-  switch (st1_p->field1)
+  unsigned short un1_field1;
+  ST_2 un1_field2;
+} UN_1;
+
+unsigned int helper_function_3(unsigned int arg1, unsigned int arg2)
+{
+  UN_1 un1;
+
+  un1.un1_field2.st2_field1 = (unsigned char)arg1;
+  un1.un1_field2.st2_field2 = (unsigned char)arg2;
+
+  un1.un1_field2.st2_field2 &= (arg1 == D_ERR_1) - 1;
+
+  return un1.un1_field1;
+}
+
+D_INLINE unsigned int helper_func_1(unsigned int arg1, unsigned int arg2)
+{
+  return helper_function_3(arg1, arg2);
+}
+
+D_INLINE unsigned int helper_func_4(unsigned int arg1)
+{
+  return ((arg1 & D_MASK) != 0);
+}
+
+D_INLINE unsigned int helper_func_2(unsigned int arg1)
+{
+  if (helper_func_4(arg1))
   {
-    case D_TYPE_1:
-      return  D_INDEX_1;
-
-    case D_TYPE_2:
-      return D_INDEX_2;
-
-    case D_TYPE_3:
-      return D_INDEX_3;
+    return *((unsigned int*)D_FIXED_ADDRESS);
   }
 
-  return D_INDEX_4;
+  return D_ERR_2;
 }
 
-ST_1* list[100];
-ST_1* list1[100];
-
-unsigned char handler_func_2(ST_1* st1_p)
+void helper_func_3(ST_1* st1_p, unsigned int arg1, unsigned int arg2)
 {
-   if (list[st1_p->field2] != 0)
+   unsigned int i;
+   for (i = 0 ; i < arg1 ; i++)
    {
-     list[st1_p->field2] = st1_p;
-     return 0;
+      st1_p->st1_field3 += arg2;
    }
-   return 1;
 }
 
-unsigned char handler_func_1(ST_1* st1_p)
+void my_func(ST_1* st1_p)
 {
-   if (list1[st1_p->field2] != 0)
-   {
-     list1[st1_p->field2] = st1_p;
-     return 1;
-   }
-   return 0;
-}
+  unsigned int var1;
+  unsigned int var2;
 
-unsigned int my_func(ST_1* st1_p)
-{
-   E_INDEX index;
-   FUNC_PTR func_p;
-   unsigned int res;
+  if (st1_p->st1_field2 != D_ERR_1)
+  {
+    var1 = helper_func_1(st1_p->st1_field2, D_THREE);
+    var2 = helper_func_2(var1);
 
-   index = get_index(st1_p);
-   func_p = func_ptr_table[index];
-   res = func_p(st1_p);
-
-   return res;
+    helper_func_3(st1_p, var1, var2);
+  }
 }
 
 void main(int argc, char* argv[])
@@ -106,11 +98,7 @@ void main(int argc, char* argv[])
    ST_1** var1_pp;
    *var1_pp = (ST_1*)argv[0];
    ST_1* st1_p = var1_pp[*argv[1]];
-   
-   if (my_func(st1_p))
-   {
-      st1_p->field2++;
-   }
+   my_func(st1_p);
 }
 
 void _start(int argc, char* argv[])
