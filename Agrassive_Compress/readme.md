@@ -17,7 +17,7 @@ Dump assembly command pattern:
 
 ```sh
 $ mkdir output
-$ riscv64-unknown-elf-gcc -o output/main.o @bld_args main.c
-$ riscv64-unknown-elf-gcc -o output/main.elf @lnk_args output/main.o
-$ riscv64-unknown-elf-objdump -D output/main.elf > ouput/main_dump 2>&1
+$ ./riscv64-unknown-elf-gcc -o output/main.o @bld_args main.c
+$ ./riscv64-unknown-elf-gcc -o output/main.elf @lnk_args output/main.o
+$ ./riscv64-unknown-elf-objdump -D output/main.elf > ouput/main_dump 2>&1
 ```
