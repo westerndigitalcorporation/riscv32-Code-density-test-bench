@@ -11,97 +11,150 @@
 * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#define D_THREE                         (3)
-#define D_ERR_1                         (0xFF)
-#define D_ERR_2                         (0)
-#define D_MASK                          (0xFF00FF00)
-#define D_FIXED_ADDRESS                 (0xF0007400)
-#define D_INLINE                        static inline
-
-typedef struct 
+typedef struct TAG_S_ST_0
 {
-  unsigned int st1_field1;
-  unsigned int st1_field2;
-  unsigned int st1_field3;
-  
-}ST_1;
+   unsigned int st_0_field_1;
+   unsigned int st_0_field_2;
+   unsigned int st_0_field_3; 
+}S_ST_0;
 
-typedef struct 
+typedef enum TAG_E_0
 {
-  unsigned char st2_field1;
-  unsigned char st2_field2; 
-} ST_2;
+   E_0_V_1,
+   E_0_V_2,
+   E_0_V_3,
+   E_0_V_4,
+   E_0_V_5,
+   E_0_V_LAST = 0xFFFFFFFF
+} E_0;
 
-typedef union 
+typedef struct TAG_S_ST_1
 {
-  unsigned short un1_field1;
-  ST_2 un1_field2;
-} UN_1;
+   unsigned char st_1_field_0;
+   unsigned char st_1_field_1;
+} S_ST_1;
 
-unsigned int helper_function_3(unsigned int arg1, unsigned int arg2)
+typedef union TAG_U_UN_0
 {
-  UN_1 un1;
+   unsigned short value;
+   S_ST_1 fields;
+} U_UN_0;
 
-  un1.un1_field2.st2_field1 = (unsigned char)arg1;
-  un1.un1_field2.st2_field2 = (unsigned char)arg2;
+#define D_INVALID         (255)
+#define D_MASK           (0xFF00FF00)
+#define D_FIXED_ADDRESS  (0xF0007400)
 
-  un1.un1_field2.st2_field2 &= (arg1 == D_ERR_1) - 1;
+static inline unsigned int func_4(unsigned int arg1, E_0 arg2)
+{
+   U_UN_0 loc_1;
 
-  return un1.un1_field1;
+   loc_1.fields.st_1_field_0 = (unsigned char)arg1;
+   loc_1.fields.st_1_field_1 = (unsigned char)arg2;
+
+   loc_1.fields.st_1_field_1 &= (arg1 == D_INVALID) - 1;
+
+   return loc_1.value;
 }
 
-D_INLINE unsigned int helper_func_1(unsigned int arg1, unsigned int arg2)
+static inline unsigned int func_1(unsigned int arg1, E_0 arg2)
 {
-  return helper_function_3(arg1, arg2);
+   return func_4(arg1, arg2);
 }
 
-D_INLINE unsigned int helper_func_4(unsigned int arg1)
+static inline unsigned int func_5(unsigned int arg1)
 {
-  return ((arg1 & D_MASK) != 0);
+   return ((arg1 & D_MASK) != 0);
 }
 
-D_INLINE unsigned int helper_func_2(unsigned int arg1)
+static inline unsigned int func_2(unsigned int arg1)
 {
-  if (helper_func_4(arg1))
-  {
-    return *((unsigned int*)D_FIXED_ADDRESS);
-  }
+   if (func_5(arg1))
+   {
+      return *((unsigned int*)D_FIXED_ADDRESS);
+   }
 
-  return D_ERR_2;
+   return 0;
 }
 
-void helper_func_3(ST_1* st1_p, unsigned int arg1, unsigned int arg2)
+void func_3(S_ST_0* p_st_0, unsigned int arg1, unsigned int arg2)
 {
    unsigned int i;
    for (i = 0 ; i < arg1 ; i++)
    {
-      st1_p->st1_field3 += arg2;
+      p_st_0->st_0_field_3 += arg2;
+   }   
+}
+
+void func_code_density(S_ST_0* p_st_0)
+{
+   unsigned int loc_1;
+   unsigned int loc_2;
+
+   if (p_st_0->st_0_field_2 != D_INVALID)
+   {
+      loc_1 = func_1(p_st_0->st_0_field_2, E_0_V_4);
+      loc_2 = func_2(loc_1);
+
+      func_3(p_st_0, loc_1, loc_2);
    }
 }
 
-void my_func(ST_1* st1_p)
+void helper_fumc_1(S_ST_0* p_st_0)
 {
-  unsigned int var1;
-  unsigned int var2;
+   unsigned int loc_1;
+   unsigned int loc_2;
 
-  if (st1_p->st1_field2 != D_ERR_1)
-  {
-    var1 = helper_func_1(st1_p->st1_field2, D_THREE);
-    var2 = helper_func_2(var1);
+   loc_1 = func_1(p_st_0->st_0_field_2 + *((unsigned int*)0x80000010), E_0_V_4);
+   loc_2 = func_2(loc_1);
 
-    helper_func_3(st1_p, var1, var2);
-  }
+   func_3(p_st_0, loc_1, loc_2);
+}
+
+void helper_fumc_2(S_ST_0* p_st_0)
+{
+   unsigned int loc_1;
+   unsigned int loc_2;
+
+   loc_1 = func_1(p_st_0->st_0_field_2 + *((unsigned int*)0x80000020), E_0_V_4);
+   loc_2 = func_2(loc_1);
+
+   func_3(p_st_0, loc_1, loc_2);
+}
+
+void helper_fumc_3(S_ST_0* p_st_0)
+{
+   unsigned int loc_1;
+   unsigned int loc_2;
+
+   loc_1 = func_1(p_st_0->st_0_field_2 + *((unsigned int*)0x80000050), E_0_V_4);
+   loc_2 = func_2(loc_1);
+
+   *((unsigned int*)0x80000000) = loc_1;
+   *((unsigned int*)0x80000020) = loc_2;
+}
+
+void helper_fumc_4(S_ST_0* p_st_0)
+{
+   unsigned int loc_1;
+   unsigned int loc_2;
+
+   loc_1 = func_1(p_st_0->st_0_field_2 + *((unsigned int*)0x80000050), E_0_V_4);
+   loc_2 = func_2(loc_1);
+
+   *((unsigned int*)0x8000001A) = loc_1;
+   *((unsigned int*)0x8000002A) = loc_2;
 }
 
 void main(int argc, char* argv[])
 {
-   ST_1** var1_pp;
-   *var1_pp = (ST_1*)argv[0];
-   ST_1* st1_p = var1_pp[*argv[1]];
-   my_func(st1_p);
+   func_code_density((S_ST_0*)argv[0]);
+   helper_fumc_1((S_ST_0*)argv[1]);
+   helper_fumc_2((S_ST_0*)argv[2]);
+   helper_fumc_3((S_ST_0*)argv[3]);
+   helper_fumc_4((S_ST_0*)argv[4]);
 }
 
 void _start(int argc, char* argv[])
 {
-  main(argc, argv);
+   main(argc, argv);
 }
