@@ -1,6 +1,6 @@
-# Tail call over save/restore
+# Divider instead bit shift
 
-> The function **f_func_to_analyze** got tail called instead of using the ```-msave-restore```.
+> The function **f_func_to_analyze** is generated with bit shifts instead of divider.
 
 
 ## Build
