@@ -17,7 +17,7 @@ Dump assembly command pattern:
 
 ```sh
 $ mkdir output
-$ ./clang -o output/main.o @bld_args main.c
-$ ./clang -o output/main.elf @lnk_args output/main.o
-$ ./riscv32-unknown-elf-objdump -DS output/main.elf > ouput/main_dump 2>&1
+$ ./clang -o main.o @bld_args main.c
+$ ./clang -o main.elf @lnk_args main.o
+$ ./riscv32-unknown-elf-objdump -DS output/main.elf > main_dump 2>&1
 ```
