@@ -21,3 +21,6 @@ $ ./clang -o main.o @llvm_bld_args main.c
 $ ./clang -o main.elf @llvm_lnk_args main.o
 $ ./riscv32-unknown-elf-objdump -DS main.elf > main_dump 2>&1
 ```
+
+#### Build with LLVM
+Please update ```--sysroot=``` and ```--gcc-toolchain=``` under llvm_bld_args/llvm_lnk_args
