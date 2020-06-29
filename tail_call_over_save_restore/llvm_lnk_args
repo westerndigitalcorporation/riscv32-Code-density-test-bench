@@ -1,0 +1,13 @@
+-Wl,--print-memory-usage
+-Wl,--gc-sections
+-Wl,--start-group
+-Wl,--end-group
+-Wl,-Map=output.map
+-Wno-typedef-redefinition
+-g
+-mabi=ilp32
+-march=rv32imc
+-nostartfiles
+-target riscv32-unkown-elf
+--sysroot=/sdil/workshop-2020-06/eagle_basecode/tools/pre_jaguar_tools/install/riscv32-unknown-elf
+--gcc-toolchain=/sdil/workshop-2020-06/eagle_basecode/tools/pre_jaguar_tools/install
