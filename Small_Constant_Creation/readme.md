@@ -34,3 +34,7 @@ $ riscv64-unknown-elf-gcc -o output/andi_li.o @bld_args andi_li.c
 $ riscv64-unknown-elf-gcc -o output/main.elf @lnk_args output/test.o output/andi_li.o
 $ riscv64-unknown-elf-objdump -D output/main.elf > output/main_dump 2>&1
 ```
+
+### Build with LLVM
+Please update ```--sysroot=``` and ```--gcc-toolchain=``` under llvm_bld_args/llvm_lnk_args
+
