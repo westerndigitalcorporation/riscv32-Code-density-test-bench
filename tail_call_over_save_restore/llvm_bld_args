@@ -15,5 +15,5 @@
 -Wno-typedef-redefinition
 -enable-machine-outliner=never
 -target riscv32-unkown-elf
---gcc-toolchain=/sdil/workshop-2020-06/eagle_basecode/tools/pre_jaguar_tools/install
---sysroot=/sdil/workshop-2020-06/eagle_basecode/tools/pre_jaguar_tools/install/riscv32-unknown-elf
+--sysroot=/home/ronen/work/BitBucket/riscv-fw-infrastructure/WD-Firmware/demo/build/toolchain/llvm/gcc/riscv32-unknown-elf
+--gcc-toolchain=/home/ronen/work/BitBucket/riscv-fw-infrastructure/WD-Firmware/demo/build/toolchain/llvm/gcc/

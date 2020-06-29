@@ -9,5 +9,5 @@
 -march=rv32imc
 -nostartfiles
 -target riscv32-unkown-elf
---sysroot=/sdil/workshop-2020-06/eagle_basecode/tools/pre_jaguar_tools/install/riscv32-unknown-elf
---gcc-toolchain=/sdil/workshop-2020-06/eagle_basecode/tools/pre_jaguar_tools/install
+--sysroot=/home/ronen/work/BitBucket/riscv-fw-infrastructure/WD-Firmware/demo/build/toolchain/llvm/gcc/riscv32-unknown-elf
+--gcc-toolchain=/home/ronen/work/BitBucket/riscv-fw-infrastructure/WD-Firmware/demo/build/toolchain/llvm/gcc/
