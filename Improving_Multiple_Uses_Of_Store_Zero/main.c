@@ -53,9 +53,9 @@ ST_CB g_cb;
       my_func();
    }
 #else
-   void my_func(unsigned int argFimId, unsigned int argValue)
+   void my_func(unsigned int argOffset, unsigned int argValue)
    {
-     *((unsigned int*)0x80000000 + argFimId) = argValue;
+     *((unsigned int*)0x80000000 + argOffset) = argValue;
    }   
 
    int main(void)
