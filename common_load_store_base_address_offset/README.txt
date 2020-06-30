@@ -1,8 +1,4 @@
 
-to get the objdump and check the disassembl:
-
-riscv32-unknown-elf-gcc -Os -march=rv32imc -mabi=ilp32 -o out.elf memaccess.c riscv32-unknown-elf-objdump -D out.elf > out.d
-
 ## Build
 in order to build the test please run the following command/s using your **_LLVM RISCV_** compiler<br/>
 first you need to build and link the source files then dump the assimbly of the executable binary to file
