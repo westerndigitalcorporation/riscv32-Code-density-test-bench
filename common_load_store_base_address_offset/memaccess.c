@@ -47,4 +47,10 @@ int main(int argc, char** argv)
 	test();
 }
 
+#ifdef __clang__
+void _start(int argc, char* argv[])
+{
+  main(argc, argv);
+}
+#endif
 

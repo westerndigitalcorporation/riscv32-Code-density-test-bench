@@ -1,0 +1,13 @@
+-Wl,--gc-sections
+-Wl,--print-memory-usage 
+-Wl,--start-group 
+-Wl,--end-group
+-Wl,-Map=output.map 
+-Wno-typedef-redefinition
+-g
+-mabi=ilp32
+-march=rv32imc
+-nostartfiles
+-target riscv32-unkown-elf
+--sysroot=/home/ronen/work/BitBucket/riscv-fw-infrastructure/WD-Firmware/demo/build/toolchain/llvm/gcc/riscv32-unknown-elf
+--gcc-toolchain=/home/ronen/work/BitBucket/riscv-fw-infrastructure/WD-Firmware/demo/build/toolchain/llvm/gcc/
