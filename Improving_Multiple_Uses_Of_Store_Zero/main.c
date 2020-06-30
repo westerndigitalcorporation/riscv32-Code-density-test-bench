@@ -29,28 +29,51 @@ typedef struct TAG_ST_CB
 
 ST_CB g_cb;
 
-void *memset(void *dest, int c, unsigned int n)
-{ 
-   unsigned char* dest_ptr = (unsigned char*)dest;
-   register char ch = (char)c;
+#ifndef __clang__
+   void *memset(void *dest, int c, unsigned int n)
+   { 
+      unsigned char* dest_ptr = (unsigned char*)dest;
+      register char ch = (char)c;
 
-   while (n--)
-   {
-     *dest_ptr++ = ch;
+      while (n--)
+      {
+        *dest_ptr++ = ch;
+      }
+
+      return dest;
    }
 
-   return dest;
-}
+   void my_func(void)
+   {
+     memset(&g_cb, 0, sizeof(g_cb));
+   }
 
-void my_func(void)
-{
-  memset(&g_cb, 0, sizeof(g_cb));
-}
+   void main(void)
+   {
+      my_func();
+   }
+#else
+   void my_func(unsigned int argFimId, unsigned int argValue)
+   {
+     *((unsigned int*)0x80000000 + argFimId) = argValue;
+   }   
 
-void main(void)
-{
-   my_func();
-}
+   int main(void)
+   {
+      my_func(0, 0);
+      my_func(1, 0);
+      my_func(2, 0);
+      my_func(3, 0);
+      my_func(4, 0);
+      my_func(5, 0);
+      my_func(6, 0);
+      my_func(7, 0);
+      my_func(8, 0);
+      my_func(9, 0);
+      my_func(10, 0);
+      my_func(11, 0);
+   }
+#endif // #ifndef __clang__
 
 void _start()
 {
