@@ -13,9 +13,9 @@ Dump assembly command pattern:
 
 ```sh
 $ mkdir output
-$ ./clang -o main.o @llvm_bld_args main.c
-$ ./clang -o main.elf @llvm_lnk_args main.o
-$ ./riscv32-unknown-elf-objdump -DS main.elf > main_dump 2>&1
+$ ./clang -o memaccess.o @llvm_bld_args memaccess.c
+$ ./clang -o memaccess.elf @llvm_lnk_args memaccess.o
+$ ./riscv32-unknown-elf-objdump -DS memaccess.elf > memaccess_dump 2>&1
 ```
 
 ### Build with LLVM
