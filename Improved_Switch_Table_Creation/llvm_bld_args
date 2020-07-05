@@ -1,0 +1,19 @@
+-msave-restore
+-c
+-g3
+-march=rv32imc
+-Oz
+-std=gnu99
+-nostartfiles
+-fdata-sections
+-fno-builtin-printf
+-static
+-mabi=ilp32
+-mcmodel=medany
+-ffunction-sections
+-Wno-unused-command-line-argument
+-Wno-typedef-redefinition
+-enable-machine-outliner=never
+-target riscv32-unkown-elf
+--sysroot=/home/ronen/work/BitBucket/riscv-fw-infrastructure/WD-Firmware/demo/build/toolchain/llvm/gcc/riscv32-unknown-elf
+--gcc-toolchain=/home/ronen/work/BitBucket/riscv-fw-infrastructure/WD-Firmware/demo/build/toolchain/llvm/gcc/
