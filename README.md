@@ -1,7 +1,7 @@
 # RISCV - 32 Test benches
 
-This repo contain WD test benches which created upon observation and anaylasis, of risc-v compilers gcc and llvm agains diffrent ISA's.
-Those test cases promoting issues were the compiler could do better. 
+This repo contain WD test benches which created upon observation and anaylasis of risc-v compilers, gcc and llvm, against diffrent ISA's.
+Those test cases promoting issues were the compiler could do better in density aspects. 
 
 Note: the first observation and anaylasis was based on gcc 7.x and few of the test cases have already been modified/fixed 
 
