@@ -1,6 +1,9 @@
 # RISCV - 32 Test benches
 
-This is the WD test benches for GCC (only C) density issues arround risc-v
+This repo contain WD test benches which created upon observation and anaylasis, of risc-v compilers gcc and llvm agains diffrent ISA's.
+Those test cases promoting issues were the compiler could do better. 
+
+Note: the first observation and anaylasis was based on gcc 7.x and few of the test cases have already been modified/fixed 
 
 ### Getting the sources
 
