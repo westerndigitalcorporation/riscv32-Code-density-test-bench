@@ -95,7 +95,10 @@ typedef enum TAG_E_VAL
   D_VAL_4,
   D_VAL_5,
   D_VAL_6,
-  D_VAL_7
+  D_VAL_7,
+  D_VAL_8,
+  D_VAL_9,
+  D_VAL_10,
 } E_VAL;
 
 FUNC_PTR func_ptr_table[] =
@@ -144,7 +147,7 @@ int my_func(unsigned int die, void* pAddr)
 
     case D_VAL_4:
     {
-       list2[amount + die] = func_ptr_table[die + 1];
+      list2[amount + die] = func_ptr_table[die + 1];
       amount++;
       list2[amount + die] = func_ptr_table[die + 2];
       amount++;
@@ -153,7 +156,7 @@ int my_func(unsigned int die, void* pAddr)
 
     case D_VAL_5:
     {
-       list2[amount + die] = func_ptr_table[die - 2];
+      list2[amount + die] = func_ptr_table[die - 2];
       amount++;
       list2[amount + die] = func_ptr_table[die + 1];
       amount++;
@@ -162,7 +165,39 @@ int my_func(unsigned int die, void* pAddr)
 
     case D_VAL_6:
     {
-       list2[amount + die] = func_ptr_table[die + 3];
+      list2[amount + die] = func_ptr_table[die + 3];
+      amount++;
+      break;
+    }
+
+    case D_VAL_7:
+    {
+      list2[amount] = func_ptr_table[die];
+      amount++;
+      list2[amount + die] = func_ptr_table[die + 4];
+      amount++;
+      break;
+    }
+
+    case D_VAL_8:
+    {
+      list2[amount + die] = func_ptr_table[die + 6];
+      amount++;
+      list2[amount + die] = func_ptr_table[die + 3];
+      amount++;
+      break;
+    }
+
+    case D_VAL_9:
+    {
+      list2[amount + die] = func_ptr_table[die - 5];
+      amount++;
+      break;
+    }
+
+    case D_VAL_10:
+    {
+      list2[amount + die] = func_ptr_table[die - 5];
       amount++;
       break;
     }
